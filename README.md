@@ -20,7 +20,7 @@ Para instalar en Linux lo recomendable es instalarlo a través de su gestor de p
 7. apt install curl
 8. curl -sL https://deb.nodesource.com/setup_12.x -o nodesource_setup.sh
 9. bash nodesource_setup.sh
-10. verifica gcc con (gcc -v)
+10. verifica gcc con (gcc -v); apt install gcc 
 11. sudo apt-get install -y nodejs
 12. verificando las versiones nodejs -v , npm -v 
 
