@@ -18,18 +18,26 @@ curl https://www.mongodb.org/static/pgp/server-4.0.asc | sudo apt-key add -
 
 3- Next we’ll create a source list for the MongoDB repo, so apt knows where to download from. First open the source list file in a text editor:
 
-This will open a new blank file. Paste in the following:
+This will open a new blank file. Paste in the following: **nano /etc/apt/source.list**  
+
 -  #/etc/apt/sources.list.d/mongodb-org-4.0.list
 - deb http://repo.mongodb.org/apt/debian stretch/mongodb-org/4.0 main
 
 Save and close the file, then update your package cache:
-
 
 4- sudo apt update
 
 5- Install the mongodb-org package to install the server and some supporting tools:
 
 apt-get install mongodb-org
+
+nota: si mongo presenta fallas por paquetes rotos o falta de mongo-server:
+
+- apt install -f 
+- apt install mongodb-org (luego indicara la libreria que hace falta.)
+- apt install lib
+- apt install mongo-server...
+- apt install mongodb-org 
 
 Finally, enable and start the mongod service to get your MongoDB database running:
 
@@ -128,40 +136,8 @@ db.clientes.remove(
 # Intalar Robomongo: para interfaz. 
 
 
-
-
-  https://www.digitalocean.com/community/tutorials/how-to-install-mongodb-on-debian-9
-
+https://www.digitalocean.com/community/tutorials/how-to-install-mongodb-on-debian-9
+https://linuxize.com/post/how-to-install-mongodb-on-debian-9/
+https://www.techrunnr.com/how-to-install-mongodb-compass/
 https://www.youtube.com/watch?v=Apbk83XL8L8
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 //www.youtube.com/watch?v=Apbk83XL8L8
