@@ -1,0 +1,167 @@
+# que es mongoDB: https:
+
+
+orientada a documentos, no es rlacional 
+
+# xq? es facil uso, utiliza json.  escalable 
+
+# instalando mongoDB:
+
+
+1- First, we need to add the MongoDB signing key with apt-key add. We’ll need to make sure the curl command is installed before doing so:
+
+sudo apt install curl
+
+2- Next we download the key and pass it to apt-key add:
+
+curl https://www.mongodb.org/static/pgp/server-4.0.asc | sudo apt-key add -
+
+3- Next we’ll create a source list for the MongoDB repo, so apt knows where to download from. First open the source list file in a text editor:
+
+This will open a new blank file. Paste in the following:
+-  #/etc/apt/sources.list.d/mongodb-org-4.0.list
+- deb http://repo.mongodb.org/apt/debian stretch/mongodb-org/4.0 main
+
+Save and close the file, then update your package cache:
+
+
+4- sudo apt update
+
+5- Install the mongodb-org package to install the server and some supporting tools:
+
+apt-get install mongodb-org
+
+Finally, enable and start the mongod service to get your MongoDB database running:
+
+    sudo systemctl enable mongod
+    sudo systemctl start mongod
+
+We’ve now installed and started the latest stable version of MongoDB, along with helpful management tools for the MongoDB server.
+
+Next, let’s verify that the server is running and works correctly.
+
+
+
+Step 2 — Checking the Service and Database
+
+We started MongoDB service in the previous step, now let’s verify that it is started and the database is working.
+
+First, check the service’s status:
+
+sudo systemctl status mongod
+
+
+para trabajar con mongodb debemos hablar con mongo a travez de su shell:
+
+abrimos una terminal + mongo, luego escribimos los comandos de la db.
+
+*show dbs = muestra la base de datos.(todas)
+
+* db = muestra la base de datos que estamos usando.
+
+* use mysclientes = crea una nueva base de datos.(pero no lo crea hasta no tener datos insertados en ella.)
+
+* cls = limpia la consola.
+
+* para crear un usuario:
+   db.createUser({
+	user: 'Ramon',
+	pwd: '123',
+	roles: ['readWrite','dbAdmin']
+   });
+
+NOTA: mongo se divide en colecciones, ejemplo: colecciones de clientes, ventas, productos.
+
+db.clientes.insert({}) // db, hace referencia ala base de datos; clientes es la coleccion que queremos crear; insert, los datos que vamos a incertar
+
+db.clientes.insert(
+{
+ firstName: 'pepe',
+ lastName:'sese'
+})
+
+* para ver los datos que tiene la base de datos:
+ db.clientes.find()
+
+* Para almacenar multiples datos en db:
+ 
+db.clientes.insert([
+{firstName: 'pepe',lastName:'sese'},
+{firstName: 'jose',lastName:'diaz'},
+{firstName: 'elimar',lastName:'rojas'}])
+
+*Buscar una lista de persona o por nombre: consulta por propiedades.
+db.clientes.find({firstName: 'pepe'})
+
+* Actualizar un dato: 
+db.cliente.update(
+	{lastName: 'sese'},
+	{firstName:'pepe', lastName:'Ruiz', gender:'masculi'}
+)
+
+db.clientes.find().pretty() = formato para colocarlo mas legible.
+
+* agregar simplemente un dato: 
+
+db.clientes.update(
+	{_id: ObjectId("")},
+	{$set: {age: 45}     //agrega un solo dato.
+	}
+	)
+
+* quitar un solo dato:
+db.clientes.update({id: },
+ 	{$unset: {age: 1}
+
+*Actualizar si existe, si noi agrega:
+
+db.clientes.update(
+	{fisteName: 'elena'},
+	{firstName: 'elena', lastName: 'kike'}
+	,{upsert: true}
+	)
+* Eliminar un dato:
+db.clientes.remove(
+	{busqueda. },)
+
+
+# Intalar Robomongo: para interfaz. 
+
+
+
+
+  https://www.digitalocean.com/community/tutorials/how-to-install-mongodb-on-debian-9
+
+https://www.youtube.com/watch?v=Apbk83XL8L8
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//www.youtube.com/watch?v=Apbk83XL8L8
